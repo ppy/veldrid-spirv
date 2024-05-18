@@ -46,7 +46,11 @@
     <ItemGroup>
       <_NativeAssetName Include="$(Configuration)/win-x86/libveldrid-spirv.dll" PackagePath="runtimes/win-x86/native" />
       <_NativeAssetName Include="$(Configuration)/win-x64/libveldrid-spirv.dll" PackagePath="runtimes/win-x64/native" />
+      <_NativeAssetName Include="$(Configuration)/win-arm64/libveldrid-spirv.dll" PackagePath="runtimes/win-arm64/native" />
       <_NativeAssetName Include="$(Configuration)/linux-x64/libveldrid-spirv.so" PackagePath="runtimes/linux-x64/native" />
+      <_NativeAssetName Include="$(Configuration)/linux-x86/libveldrid-spirv.so" PackagePath="runtimes/linux-x86/native" />
+      <_NativeAssetName Include="$(Configuration)/linux-arm64/libveldrid-spirv.so" PackagePath="runtimes/linux-arm64/native" />
+      <_NativeAssetName Include="$(Configuration)/linux-arm/libveldrid-spirv.so" PackagePath="runtimes/linux-arm/native" />
       <_NativeAssetName Include="$(Configuration)/osx/libveldrid-spirv.dylib" PackagePath="runtimes/osx/native" />
       <_NativeAssetName Include="$(Configuration)/ios/**/*" PackagePath="runtimes/ios/native" />
       <_NativeAssetName Include="$(Configuration)/android-arm64-v8a/libveldrid-spirv.so" PackagePath="build/MonoAndroid10/native/arm64-v8a" />

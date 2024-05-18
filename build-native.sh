@@ -31,6 +31,15 @@ while :; do
         linux-x64)
             _OSDir=linux-x64
             ;;
+        linux-x86)
+            _OSDir=linux-x86
+            ;;
+        linux-arm64)
+            _OSDir=linux-arm64
+            ;;
+        linux-arm)
+            _OSDir=linux-arm
+            ;;
         ios)
             _CMakeEnableBitcode=-DENABLE_BITCODE=0
             _CMakeBuildTarget=veldrid-spirv
