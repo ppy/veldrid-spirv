@@ -102,6 +102,19 @@ void AddResources(
         else
         {
             ri.Name = resource.name;
+            // Preserve original uniform buffer names
+            // Set both type and instance names to the original name
+            // SPIRV-Cross will add a suffix to the instance (e.g., ProjView_1) to avoid conflicts
+            // The block name (type) remains as ProjView for glGetUniformBlockIndex()
+            if (kind == ResourceKind::UniformBuffer)
+            {
+                compiler->set_name(resource.base_type_id, resource.name);
+                compiler->set_name(resource.id, resource.name);
+            }
+            else
+            {
+                compiler->set_name(resource.id, resource.name);
+            }
         }
 
         ri.IDs[idIndex] = resource.id;
@@ -653,11 +666,17 @@ VD_EXPORT CompilationResult *CompileGlslToSpirv(GlslCompileInfo *info)
     {
         shaderc::CompileOptions options;
 
-        if (info->Debug)
-        {
-            options.SetGenerateDebugInfo();
-        }
-        else
+        // CRITICAL: Always generate debug info to preserve OpName instructions.
+        // OpName instructions store the original identifier names (uniform blocks, variables, etc.)
+        // in the SPIRV bytecode. Without these, SPIRV-Cross cannot recover the original names
+        // when cross-compiling SPIRV→GLSL, resulting in auto-generated names like
+        // "_RESERVED_IDENTIFIER_FIXUP_XX_YY" instead of the original uniform block names.
+        // This is REQUIRED for OpenGL/GLES targets where uniform block names are used at runtime
+        // (e.g., glGetUniformBlockIndex("ViewSize")).
+        // Performance optimization can still be applied independently of debug info.
+        options.SetGenerateDebugInfo();
+
+        if (!info->Debug)
         {
             options.SetOptimizationLevel(shaderc_optimization_level_performance);
         }
