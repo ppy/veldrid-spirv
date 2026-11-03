@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -16,11 +15,12 @@ namespace Veldrid.SPIRV
         {
             if (string.IsNullOrEmpty(macroDefinition.Name))
             {
-                throw new SpirvCompilationException($"MacroDefinition Name must be non-null.");
+                throw new SpirvCompilationException("MacroDefinition Name must be non-null.");
             }
+
             if (macroDefinition.Name.Length > 128)
             {
-                throw new SpirvCompilationException($"Macro names must be less than or equal to 128 characters.");
+                throw new SpirvCompilationException("Macro names must be less than or equal to 128 characters.");
             }
 
             fixed (char* nameU16Ptr = macroDefinition.Name)
@@ -33,7 +33,7 @@ namespace Veldrid.SPIRV
             {
                 if (macroDefinition.Value.Length > 128)
                 {
-                    throw new SpirvCompilationException($"Macro values must be less than or equal to 128 characters.");
+                    throw new SpirvCompilationException("Macro values must be less than or equal to 128 characters.");
                 }
 
                 fixed (char* valueU16 = macroDefinition.Value)
