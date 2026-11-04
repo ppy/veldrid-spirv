@@ -15,7 +15,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ppy.Veldrid" Version="4.9.69-ga405fe8484"/>
+        <PackageReference Include="ppy.Veldrid" Version="4.9.84-g400ef9fc72" />
         <PackageReference Update="Nerdbank.GitVersioning" Version="3.4.255">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

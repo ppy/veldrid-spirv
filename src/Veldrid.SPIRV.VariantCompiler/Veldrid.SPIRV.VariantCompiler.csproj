@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Veldrid.SPIRV" Version="1.0.14" />
+    <PackageReference Include="Veldrid.SPIRV" Version="1.0.15" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.0.1" />
   </ItemGroup>
 
